@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import PersonSchema from "@/components/PersonSchema";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -17,11 +18,12 @@ export const metadata: Metadata = {
 
   title: {
     default: "MaghFirli Alif Al Ayubi | Cyber Security Engineer",
+
     template: "%s | MaghFirli Alif Al Ayubi",
   },
 
   description:
-    "Official portfolio of MaghFirli Alif Al Ayubi, Cyber Security Engineer specializing in Cybersecurity, Governance Risk Compliance (GRC), Penetration Testing, ISO 27001, and Secure Software Development.",
+    "Official portfolio of MaghFirli Alif Al Ayubi, Cyber Security Engineer specializing in Cybersecurity, Penetration Testing, GRC, ISO 27001, Risk Management, and Secure Software Development.",
 
   keywords: [
     "MaghFirli Alif Al Ayubi",
@@ -32,7 +34,6 @@ export const metadata: Metadata = {
     "Penetration Tester",
     "Pentester",
     "GRC",
-    "Governance Risk Compliance",
     "ISO 27001",
     "Risk Management",
     "Secure Developer",
@@ -42,18 +43,16 @@ export const metadata: Metadata = {
   authors: [
     {
       name: "MaghFirli Alif Al Ayubi",
+      url: "https://portfolio-cyber-lyart.vercel.app",
     },
   ],
 
-  creator: "MaghFirli Al Ayubi",
+  creator: "MaghFirli Alif Al Ayubi",
 
-  publisher: "MaghFirli Al Ayubi",
+  publisher: "MaghFirli Alif Al Ayubi",
 
   applicationName: "MaghFirli Portfolio",
 
-  /**
-   * GOOGLE SEARCH CONSOLE VERIFICATION
-   */
   verification: {
     google: "vOnKUYLkjihgOxUBD4t9zBbGyVUpGYbyF5UR3_L6tBU",
   },
@@ -70,13 +69,16 @@ export const metadata: Metadata = {
     title: "MaghFirli Alif Al Ayubi | Cyber Security Engineer",
 
     description:
-      "Cybersecurity, GRC, ISO 27001, Penetration Testing, and Secure Development Portfolio.",
+      "Cyber Security Engineer portfolio covering Penetration Testing, GRC, ISO 27001, and Secure Software Development.",
 
     images: [
       {
         url: "/images/profile/profile.png",
+
         width: 800,
+
         height: 800,
+
         alt: "MaghFirli Alif Al Ayubi Cyber Security Portfolio",
       },
     ],
@@ -88,17 +90,19 @@ export const metadata: Metadata = {
     title: "MaghFirli Alif Al Ayubi | Cyber Security Engineer",
 
     description:
-      "Cybersecurity, GRC, ISO 27001, and Secure Development Portfolio.",
+      "Cybersecurity, GRC, ISO 27001, Penetration Testing and Secure Development Portfolio.",
 
     images: ["/images/profile/profile.png"],
   },
 
   robots: {
     index: true,
+
     follow: true,
 
     googleBot: {
       index: true,
+
       follow: true,
 
       "max-image-preview": "large",
@@ -128,6 +132,10 @@ export default function RootLayout({
           antialiased
         `}
       >
+        {/* Google Knowledge Graph Person Schema */}
+
+        <PersonSchema />
+
         {children}
       </body>
     </html>
