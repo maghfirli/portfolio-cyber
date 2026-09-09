@@ -1,17 +1,23 @@
 "use client";
 
 import { ArrowUpRight, Menu, X } from "lucide-react";
+
 import { useEffect, useState } from "react";
 
 const sections = ["home", "about", "portfolio", "contact"];
 
 export default function Navbar() {
   const [active, setActive] = useState("home");
+
   const [open, setOpen] = useState(false);
+
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 300;
+      setScrolled(window.scrollY > 40);
+
+      const scroll = window.scrollY + 300;
 
       let current = "home";
 
@@ -20,9 +26,10 @@ export default function Navbar() {
 
         if (section) {
           const top = section.offsetTop;
+
           const height = section.offsetHeight;
 
-          if (scrollPosition >= top && scrollPosition < top + height) {
+          if (scroll >= top && scroll < top + height) {
             current = id;
           }
         }
@@ -46,100 +53,127 @@ export default function Navbar() {
 
   return (
     <nav
-      className="
-        fixed
-        top-0
-        left-0
-        right-0
+      className={`
+fixed
 
-        z-[100]
+top-0
 
-        h-[90px]
+left-0
 
-        bg-[#020617]/80
+right-0
 
-        backdrop-blur-xl
+z-[100]
 
-        border-b
-        border-white/5
-      "
+
+transition-all
+
+duration-300
+
+
+backdrop-blur-xl
+
+
+border-b
+
+border-white/10
+
+
+
+${
+  scrolled
+    ? "bg-[#020617]/90 shadow-[0_10px_40px_rgba(0,255,136,0.15)]"
+    : "bg-[#020617]/70"
+}
+
+`}
     >
       <div
         className="
-          w-full
+max-w-[1800px]
 
-          max-w-[1800px]
+mx-auto
 
-          mx-auto
+h-[90px]
 
-          h-full
+px-5
 
-          px-5
+lg:px-16
 
-          sm:px-8
 
-          xl:px-16
+flex
 
-          flex
+items-center
 
-          items-center
-
-          justify-between
-        "
+justify-between
+"
       >
         {/* LOGO */}
 
         <div
           className="
-            flex
-            items-center
-            gap-3
-            sm:gap-4
-          "
+flex
+
+items-center
+
+gap-3
+"
         >
           <div
             className="
-              text-[#00FF88]
+relative
 
-              font-bold
+text-[#00FF88]
 
-              text-3xl
+font-bold
 
-              sm:text-4xl
-            "
+text-4xl
+
+leading-none
+"
           >
             MF
+            <span
+              className="
+absolute
+
+inset-0
+
+bg-[#00FF88]/40
+
+blur-2xl
+
+rounded-full
+
+-z-10
+"
+            />
           </div>
 
           <div>
             <h1
               className="
-                text-white
+text-white
 
-                font-bold
+font-bold
 
-                text-sm
+text-sm
 
-                sm:text-base
-
-                leading-tight
-              "
+lg:text-base
+"
             >
               MaghFirli Alif Al Ayubi
             </h1>
 
             <p
               className="
-                hidden
+hidden
 
-                sm:block
+sm:block
 
-                text-gray-400
+text-gray-400
 
-                text-xs
-
-                mt-1
-              "
+text-xs
+"
             >
               Cyber Security | GRC | Pentester
             </p>
@@ -150,14 +184,14 @@ export default function Navbar() {
 
         <div
           className="
-            hidden
+hidden
 
-            md:flex
+md:flex
 
-            items-center
+items-center
 
-            gap-12
-          "
+gap-14
+"
         >
           <NavItem href="#home" text="Home" active={active === "home"} />
 
@@ -176,59 +210,67 @@ export default function Navbar() {
           />
         </div>
 
-        {/* DESKTOP BUTTON */}
+        {/* CONNECT BUTTON */}
 
         <a
           href="#contact"
           className="
-            hidden
+hidden
 
-            lg:flex
+lg:flex
 
-            items-center
+items-center
 
-            gap-3
+gap-3
 
-            px-7
 
-            py-3
+px-7
 
-            rounded-xl
+py-3
 
-            border
 
-            border-[#00FF88]
+rounded-xl
 
-            text-[#00FF88]
 
-            font-bold
+border
 
-            transition
+border-[#00FF88]
 
-            hover:bg-[#00FF88]
 
-            hover:text-black
+text-[#00FF88]
 
-            hover:shadow-[0_0_25px_#00FF88]
-          "
+
+font-bold
+
+
+transition-all
+
+
+hover:bg-[#00FF88]
+
+hover:text-black
+
+hover:shadow-[0_0_25px_#00FF88]
+"
         >
           Let's Connect
           <span
             className="
-              w-5
+w-5
 
-              h-5
+h-5
 
-              rounded-full
+rounded-full
 
-              bg-[#00FF88]
+bg-[#00FF88]
 
-              flex
 
-              items-center
+flex
 
-              justify-center
-            "
+items-center
+
+justify-center
+"
           >
             <ArrowUpRight size={13} className="text-black" />
           </span>
@@ -239,15 +281,14 @@ export default function Navbar() {
         <button
           onClick={() => setOpen(!open)}
           className="
-            md:hidden
+md:hidden
 
-            text-white
+text-white
 
-            hover:text-[#00FF88]
+hover:text-[#00FF88]
 
-            transition
-          "
-          aria-label="Toggle mobile menu"
+transition
+"
         >
           {open ? <X size={32} /> : <Menu size={32} />}
         </button>
@@ -257,47 +298,61 @@ export default function Navbar() {
 
       <div
         className={`
-          md:hidden
 
-          absolute
-
-          top-[90px]
-
-          left-0
-
-          right-0
-
-          bg-[#020617]/95
-
-          backdrop-blur-xl
-
-          border-b
-
-          border-white/10
-
-          overflow-hidden
-
-          transition-all
-
-          duration-300
+md:hidden
 
 
-          ${open ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}
+absolute
 
-        `}
+
+top-[90px]
+
+
+left-0
+
+right-0
+
+
+
+bg-[#020617]/95
+
+
+backdrop-blur-2xl
+
+
+
+border-b
+
+border-white/10
+
+
+
+overflow-hidden
+
+
+
+transition-all
+
+duration-500
+
+
+
+${open ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}
+
+`}
       >
         <div
           className="
-            px-6
+px-6
 
-            py-8
+py-8
 
-            flex
+flex
 
-            flex-col
+flex-col
 
-            gap-6
-          "
+gap-6
+"
         >
           <MobileItem href="#home" text="Home" close={closeMenu} />
 
@@ -311,30 +366,33 @@ export default function Navbar() {
             href="#contact"
             onClick={closeMenu}
             className="
-              mt-2
+mt-3
 
-              flex
+flex
 
-              items-center
+justify-center
 
-              justify-center
+items-center
 
-              gap-3
+gap-3
 
-              px-6
 
-              py-3
+py-3
 
-              rounded-xl
 
-              border
+rounded-xl
 
-              border-[#00FF88]
 
-              text-[#00FF88]
+border
 
-              font-bold
-            "
+border-[#00FF88]
+
+
+text-[#00FF88]
+
+
+font-bold
+"
           >
             Let's Connect
             <ArrowUpRight size={18} />
@@ -358,89 +416,118 @@ function NavItem({
     <a
       href={href}
       className="
-        relative
+relative
 
-        group
+group
 
-        font-bold
+font-bold
 
-        text-sm
+text-sm
 
-        pb-8
+pb-8
 
-        transition
-      "
+"
     >
       <span
         className={`
-          transition
+transition-all
 
-          duration-300
+duration-300
 
-          ${active ? "text-[#00FF88]" : "text-white group-hover:text-[#00FF88]"}
-        `}
+
+${active ? "text-[#00FF88]" : "text-white group-hover:text-[#00FF88]"}
+
+`}
       >
         {text}
       </span>
 
-      {/* DOT */}
+      {/* DOT BAWAH */}
 
       <span
         className={`
-          absolute
 
-          left-1/2
-
-          -translate-x-1/2
-
-          bottom-3
-
-          w-[7px]
-
-          h-[7px]
-
-          rounded-full
-
-          bg-[#00FF88]
-
-          transition-all
-
-          duration-300
+absolute
 
 
-          ${
-            active
-              ? "opacity-100 scale-100"
-              : "opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100"
-          }
+left-1/2
 
-        `}
+
+-translate-x-1/2
+
+
+
+bottom-3
+
+
+
+w-[7px]
+
+
+h-[7px]
+
+
+rounded-full
+
+
+
+bg-[#00FF88]
+
+
+
+transition-all
+
+duration-300
+
+
+
+${
+  active
+    ? "opacity-100 scale-100"
+    : "opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100"
+}
+
+`}
       />
 
-      {/* LINE */}
+      {/* GARIS BAWAH */}
 
       <span
         className={`
-          absolute
 
-          left-1/2
-
-          -translate-x-1/2
-
-          bottom-0
-
-          h-[2px]
-
-          bg-[#00FF88]
-
-          transition-all
-
-          duration-300
+absolute
 
 
-          ${active ? "w-10" : "w-0 group-hover:w-10"}
+left-1/2
 
-        `}
+
+-translate-x-1/2
+
+
+
+bottom-0
+
+
+
+h-[2px]
+
+
+
+bg-[#00FF88]
+
+
+
+transition-all
+
+
+
+duration-300
+
+
+
+${active ? "w-10" : "w-0 group-hover:w-10"}
+
+`}
       />
     </a>
   );
@@ -460,16 +547,18 @@ function MobileItem({
       href={href}
       onClick={close}
       className="
-        text-white
+text-white
 
-        text-lg
+text-lg
 
-        font-bold
+font-bold
 
-        hover:text-[#00FF88]
 
-        transition
-      "
+hover:text-[#00FF88]
+
+
+transition
+"
     >
       {text}
     </a>

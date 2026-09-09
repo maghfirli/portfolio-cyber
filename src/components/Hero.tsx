@@ -370,18 +370,18 @@ text-[17px]
 
         <div
           className="
-          relative
+relative
 
-          h-[620px]
+h-[520px]
 
-          sm:h-[750px]
+sm:h-[650px]
 
-          lg:h-[900px]
+lg:h-[900px]
 
-          mt-10
+mt-0
 
-          lg:mt-0
-          "
+lg:mt-0
+"
         >
           {/* INNER GLOW */}
 
@@ -447,7 +447,7 @@ text-[17px]
 
 
 
-            top-[120px]
+            top-[70px]
 
 
             w-[320px]
@@ -499,7 +499,7 @@ text-[17px]
 
 
 
-            top-[90px]
+            top-[50px]
 
 
             w-[360px]
@@ -548,12 +548,12 @@ text-[17px]
 
 
 
-            bottom-[-10px]
+            bottom-[-20px]
 
 
-            w-[330px]
+            w-[390px]
 
-            h-[480px]
+            h-[560px]
 
 
             sm:w-[520px]
@@ -589,9 +589,9 @@ text-[17px]
 
           <Card
             className="
-            top-[70px]
+            top-[120px]
 
-            left-[-20px]
+            left-[5px]
 
 
             lg:top-[180px]
@@ -607,9 +607,9 @@ text-[17px]
 
           <Card
             className="
-            top-[140px]
+            top-[120px]
 
-            right-[-20px]
+            right-[5px]
 
 
             lg:top-[180px]
@@ -625,9 +625,9 @@ text-[17px]
 
           <Card
             className="
-            bottom-[120px]
+            bottom-[100px]
 
-            left-[-20px]
+            left-[5px]
 
 
             lg:bottom-[220px]
@@ -645,7 +645,7 @@ text-[17px]
             className="
             bottom-[100px]
 
-            right-[-20px]
+            right-[5px]
 
 
             lg:bottom-[200px]
