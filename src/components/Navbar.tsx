@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, X, Home, User, Folder, Mail } from "lucide-react";
 
 import { useEffect, useState } from "react";
 
@@ -17,7 +17,7 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
 
-      const scroll = window.scrollY + 300;
+      const position = window.scrollY + 300;
 
       let current = "home";
 
@@ -29,7 +29,7 @@ export default function Navbar() {
 
           const height = section.offsetHeight;
 
-          if (scroll >= top && scroll < top + height) {
+          if (position >= top && position < top + height) {
             current = id;
           }
         }
@@ -52,8 +52,10 @@ export default function Navbar() {
   };
 
   return (
-    <nav
-      className={`
+    <>
+      <nav
+        className={`
+
 fixed
 
 top-0
@@ -62,12 +64,13 @@ left-0
 
 right-0
 
+
 z-[100]
 
 
 transition-all
 
-duration-300
+duration-500
 
 
 backdrop-blur-xl
@@ -81,23 +84,27 @@ border-white/10
 
 ${
   scrolled
-    ? "bg-[#020617]/90 shadow-[0_10px_40px_rgba(0,255,136,0.15)]"
+    ? "bg-[#020617]/95 shadow-[0_10px_40px_rgba(0,255,136,0.15)]"
     : "bg-[#020617]/70"
 }
 
 `}
-    >
-      <div
-        className="
+      >
+        <div
+          className="
+
 max-w-[1800px]
 
 mx-auto
 
+
 h-[90px]
+
 
 px-5
 
 lg:px-16
+
 
 
 flex
@@ -105,126 +112,153 @@ flex
 items-center
 
 justify-between
-"
-      >
-        {/* LOGO */}
 
-        <div
-          className="
+"
+        >
+          {/* LOGO */}
+
+          <div
+            className="
+
 flex
 
 items-center
 
-gap-3
+gap-4
+
 "
-        >
-          <div
-            className="
+          >
+            <div
+              className="
+
 relative
 
 text-[#00FF88]
 
-font-bold
+font-black
 
 text-4xl
 
 leading-none
+
 "
-          >
-            MF
-            <span
-              className="
+            >
+              MF
+              <span
+                className="
+
 absolute
 
 inset-0
 
-bg-[#00FF88]/40
+bg-[#00FF88]/50
 
 blur-2xl
 
 rounded-full
 
 -z-10
-"
-            />
-          </div>
 
-          <div>
-            <h1
-              className="
+"
+              />
+            </div>
+
+            <div>
+              <h1
+                className="
+
 text-white
 
 font-bold
 
 text-sm
 
-lg:text-base
-"
-            >
-              MaghFirli Alif Al Ayubi
-            </h1>
+lg:text-lg
 
-            <p
-              className="
+leading-tight
+
+"
+              >
+                MaghFirli Alif Al Ayubi
+              </h1>
+
+              <p
+                className="
+
 hidden
 
 sm:block
 
+
 text-gray-400
 
+
 text-xs
+
+
+tracking-wide
+
 "
-            >
-              Cyber Security | GRC | Pentester
-            </p>
+              >
+                Cyber Security | GRC | Pentester
+              </p>
+            </div>
           </div>
-        </div>
 
-        {/* DESKTOP MENU */}
+          {/* DESKTOP MENU */}
 
-        <div
-          className="
+          <div
+            className="
+
 hidden
 
 md:flex
 
+
 items-center
 
-gap-14
+
+gap-16
+
+
 "
-        >
-          <NavItem href="#home" text="Home" active={active === "home"} />
+          >
+            <NavItem href="#home" text="Home" active={active === "home"} />
 
-          <NavItem href="#about" text="About" active={active === "about"} />
+            <NavItem href="#about" text="About" active={active === "about"} />
 
-          <NavItem
-            href="#portfolio"
-            text="Portfolio"
-            active={active === "portfolio"}
-          />
+            <NavItem
+              href="#portfolio"
+              text="Portfolio"
+              active={active === "portfolio"}
+            />
 
-          <NavItem
+            <NavItem
+              href="#contact"
+              text="Contact"
+              active={active === "contact"}
+            />
+          </div>
+
+          {/* BUTTON */}
+
+          <a
             href="#contact"
-            text="Contact"
-            active={active === "contact"}
-          />
-        </div>
+            className="
 
-        {/* CONNECT BUTTON */}
-
-        <a
-          href="#contact"
-          className="
 hidden
 
 lg:flex
 
+
 items-center
+
 
 gap-3
 
 
-px-7
+px-8
+
 
 py-3
 
@@ -243,24 +277,34 @@ text-[#00FF88]
 font-bold
 
 
+text-lg
+
+
 transition-all
+
 
 
 hover:bg-[#00FF88]
 
+
 hover:text-black
 
-hover:shadow-[0_0_25px_#00FF88]
-"
-        >
-          Let's Connect
-          <span
-            className="
-w-5
 
-h-5
+hover:shadow-[0_0_30px_#00FF88]
+
+"
+          >
+            Let's Connect
+            <span
+              className="
+
+w-6
+
+h-6
+
 
 rounded-full
+
 
 bg-[#00FF88]
 
@@ -270,64 +314,135 @@ flex
 items-center
 
 justify-center
+
 "
-          >
-            <ArrowUpRight size={13} className="text-black" />
-          </span>
-        </a>
+            >
+              <ArrowUpRight size={15} className="text-black" />
+            </span>
+          </a>
 
-        {/* MOBILE BUTTON */}
+          {/* MOBILE BUTTON */}
 
-        <button
-          onClick={() => setOpen(!open)}
-          className="
+          <button
+            onClick={() => setOpen(!open)}
+            className="
+
 md:hidden
+
+
+w-11
+
+h-11
+
+
+rounded-xl
+
+
+border
+
+border-[#00FF88]/40
+
+
+bg-[#071A18]/90
+
+
+backdrop-blur-xl
+
+
+flex
+
+items-center
+
+justify-center
+
 
 text-white
 
-hover:text-[#00FF88]
 
-transition
+shadow-[0_0_25px_rgba(0,255,136,0.25)]
+
+
+transition-all
+
 "
-        >
-          {open ? <X size={32} /> : <Menu size={32} />}
-        </button>
-      </div>
+          >
+            {open ? <X size={27} /> : <Menu size={27} />}
+          </button>
+        </div>
+      </nav>
+
+      {/* MOBILE OVERLAY */}
+
+      {open && (
+        <div
+          onClick={closeMenu}
+          className="
+
+fixed
+
+inset-0
+
+
+top-[90px]
+
+
+z-[90]
+
+
+md:hidden
+
+
+bg-black/60
+
+
+backdrop-blur-md
+
+"
+        />
+      )}
 
       {/* MOBILE MENU */}
 
       <div
         className={`
 
+fixed
+
+
+top-[105px]
+
+
+left-4
+
+right-4
+
+
+z-[95]
+
+
 md:hidden
 
 
-absolute
 
-
-top-[90px]
-
-
-left-0
-
-right-0
+rounded-3xl
 
 
 
 bg-[#020617]/95
 
 
-backdrop-blur-2xl
+
+backdrop-blur-3xl
 
 
 
-border-b
+border
 
-border-white/10
+border-[#00FF88]/20
 
 
 
-overflow-hidden
+shadow-[0_20px_80px_rgba(0,255,136,0.25)]
 
 
 
@@ -337,92 +452,125 @@ duration-500
 
 
 
-${open ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}
+overflow-hidden
+
+
+
+${
+  open
+    ? "max-h-[520px] opacity-100 translate-y-0"
+    : "max-h-0 opacity-0 -translate-y-5"
+}
 
 `}
       >
         <div
           className="
-px-6
 
-py-8
+p-7
 
 flex
 
 flex-col
 
 gap-6
+
 "
         >
-          <MobileItem href="#home" text="Home" close={closeMenu} />
+          <MobileItem
+            href="#home"
+            text="Home"
+            icon={<Home size={21} />}
+            close={closeMenu}
+          />
 
-          <MobileItem href="#about" text="About" close={closeMenu} />
+          <MobileItem
+            href="#about"
+            text="About"
+            icon={<User size={21} />}
+            close={closeMenu}
+          />
 
-          <MobileItem href="#portfolio" text="Portfolio" close={closeMenu} />
+          <MobileItem
+            href="#portfolio"
+            text="Portfolio"
+            icon={<Folder size={21} />}
+            close={closeMenu}
+          />
 
-          <MobileItem href="#contact" text="Contact" close={closeMenu} />
+          <MobileItem
+            href="#contact"
+            text="Contact"
+            icon={<Mail size={21} />}
+            close={closeMenu}
+          />
 
           <a
             href="#contact"
             onClick={closeMenu}
             className="
-mt-3
+            mt-3
 
-flex
+            h-[54px]
 
-justify-center
+            rounded-xl
 
-items-center
+            bg-[#00FF88]
 
-gap-3
+            text-black
 
+            font-bold
 
-py-3
+            flex
 
+            items-center
 
-rounded-xl
+            justify-center
 
+            gap-3
 
-border
+            shadow-[0_0_25px_rgba(0,255,136,0.35)]
 
-border-[#00FF88]
+            transition-all
 
-
-text-[#00FF88]
-
-
-font-bold
-"
+            "
           >
             Let's Connect
-            <ArrowUpRight size={18} />
+            <ArrowUpRight size={19} />
           </a>
         </div>
       </div>
-    </nav>
+    </>
   );
 }
 
+// ================= DESKTOP MENU =================
+
 function NavItem({
   href,
+
   text,
+
   active,
 }: {
   href: string;
+
   text: string;
+
   active: boolean;
 }) {
   return (
     <a
       href={href}
       className="
+
 relative
 
 group
 
 font-bold
 
-text-sm
+text-lg
 
 pb-8
 
@@ -430,6 +578,7 @@ pb-8
     >
       <span
         className={`
+
 transition-all
 
 duration-300
@@ -452,27 +601,24 @@ absolute
 
 left-1/2
 
-
 -translate-x-1/2
-
 
 
 bottom-3
 
 
+w-[8px]
 
-w-[7px]
-
-
-h-[7px]
+h-[8px]
 
 
 rounded-full
 
 
-
 bg-[#00FF88]
 
+
+shadow-[0_0_15px_#00FF88]
 
 
 transition-all
@@ -500,32 +646,31 @@ absolute
 
 left-1/2
 
-
 -translate-x-1/2
-
 
 
 bottom-0
 
 
+h-[3px]
 
-h-[2px]
 
+rounded-full
 
 
 bg-[#00FF88]
 
 
+shadow-[0_0_15px_#00FF88]
+
 
 transition-all
-
-
 
 duration-300
 
 
 
-${active ? "w-10" : "w-0 group-hover:w-10"}
+${active ? "w-12" : "w-0 group-hover:w-12"}
 
 `}
       />
@@ -533,13 +678,23 @@ ${active ? "w-10" : "w-0 group-hover:w-10"}
   );
 }
 
+// ================= MOBILE ITEM =================
+
 function MobileItem({
   href,
+
   text,
+
+  icon,
+
   close,
 }: {
   href: string;
+
   text: string;
+
+  icon: React.ReactNode;
+
   close: () => void;
 }) {
   return (
@@ -547,20 +702,50 @@ function MobileItem({
       href={href}
       onClick={close}
       className="
+
+group
+
+
+flex
+
+items-center
+
+gap-4
+
+
 text-white
 
-text-lg
 
 font-bold
 
 
+text-lg
+
+
+transition-all
+
+
 hover:text-[#00FF88]
 
-
-transition
 "
     >
-      {text}
+      <span
+        className="
+
+text-[#00FF88]
+
+
+transition-transform
+
+
+group-hover:scale-110
+
+"
+      >
+        {icon}
+      </span>
+
+      <span>{text}</span>
     </a>
   );
 }
