@@ -1,12 +1,13 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const sections = ["home", "about", "portfolio", "contact"];
 
 export default function Navbar() {
   const [active, setActive] = useState("home");
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,7 +20,6 @@ export default function Navbar() {
 
         if (section) {
           const top = section.offsetTop;
-
           const height = section.offsetHeight;
 
           if (scrollPosition >= top && scrollPosition < top + height) {
@@ -40,63 +40,73 @@ export default function Navbar() {
     };
   }, []);
 
+  const closeMenu = () => {
+    setOpen(false);
+  };
+
   return (
     <nav
       className="
-fixed
-top-0
-left-0
-right-0
+        fixed
+        top-0
+        left-0
+        right-0
 
-z-50
+        z-[100]
 
-h-[90px]
+        h-[90px]
 
-bg-[#020617]/80
+        bg-[#020617]/80
 
-backdrop-blur-xl
+        backdrop-blur-xl
 
-border-b
-border-white/5
-"
+        border-b
+        border-white/5
+      "
     >
       <div
         className="
-w-full
+          w-full
 
-max-w-[1800px]
+          max-w-[1800px]
 
-mx-auto
+          mx-auto
 
-h-full
+          h-full
 
-px-8
-xl:px-16
+          px-5
 
-flex
+          sm:px-8
 
-items-center
+          xl:px-16
 
-justify-between
-"
+          flex
+
+          items-center
+
+          justify-between
+        "
       >
         {/* LOGO */}
 
         <div
           className="
-flex
-items-center
-gap-4
-"
+            flex
+            items-center
+            gap-3
+            sm:gap-4
+          "
         >
           <div
             className="
-text-[#00FF88]
+              text-[#00FF88]
 
-font-bold
+              font-bold
 
-text-4xl
-"
+              text-3xl
+
+              sm:text-4xl
+            "
           >
             MF
           </div>
@@ -104,44 +114,50 @@ text-4xl
           <div>
             <h1
               className="
-text-white
+                text-white
 
-font-bold
+                font-bold
 
-text-base
+                text-sm
 
-leading-tight
-"
+                sm:text-base
+
+                leading-tight
+              "
             >
               MaghFirli Alif Al Ayubi
             </h1>
 
             <p
               className="
-text-gray-400
+                hidden
 
-text-xs
+                sm:block
 
-mt-1
-"
+                text-gray-400
+
+                text-xs
+
+                mt-1
+              "
             >
               Cyber Security | GRC | Pentester
             </p>
           </div>
         </div>
 
-        {/* NAV MENU */}
+        {/* DESKTOP MENU */}
 
         <div
           className="
-hidden
+            hidden
 
-md:flex
+            md:flex
 
-items-center
+            items-center
 
-gap-12
-"
+            gap-12
+          "
         >
           <NavItem href="#home" text="Home" active={active === "home"} />
 
@@ -160,63 +176,170 @@ gap-12
           />
         </div>
 
-        {/* BUTTON */}
+        {/* DESKTOP BUTTON */}
 
         <a
           href="#contact"
           className="
-hidden
+            hidden
 
-lg:flex
+            lg:flex
 
-items-center
+            items-center
 
-gap-3
+            gap-3
 
-px-7
+            px-7
 
-py-3
+            py-3
 
-rounded-xl
+            rounded-xl
 
-border
+            border
 
-border-[#00FF88]
+            border-[#00FF88]
 
-text-[#00FF88]
+            text-[#00FF88]
 
-font-bold
+            font-bold
 
-transition
+            transition
 
-hover:bg-[#00FF88]
+            hover:bg-[#00FF88]
 
-hover:text-black
+            hover:text-black
 
-hover:shadow-[0_0_25px_#00FF88]
-"
+            hover:shadow-[0_0_25px_#00FF88]
+          "
         >
           Let's Connect
           <span
             className="
-w-5
+              w-5
 
-h-5
+              h-5
 
-rounded-full
+              rounded-full
 
-bg-[#00FF88]
+              bg-[#00FF88]
 
-flex
+              flex
 
-items-center
+              items-center
 
-justify-center
-"
+              justify-center
+            "
           >
             <ArrowUpRight size={13} className="text-black" />
           </span>
         </a>
+
+        {/* MOBILE BUTTON */}
+
+        <button
+          onClick={() => setOpen(!open)}
+          className="
+            md:hidden
+
+            text-white
+
+            hover:text-[#00FF88]
+
+            transition
+          "
+          aria-label="Toggle mobile menu"
+        >
+          {open ? <X size={32} /> : <Menu size={32} />}
+        </button>
+      </div>
+
+      {/* MOBILE MENU */}
+
+      <div
+        className={`
+          md:hidden
+
+          absolute
+
+          top-[90px]
+
+          left-0
+
+          right-0
+
+          bg-[#020617]/95
+
+          backdrop-blur-xl
+
+          border-b
+
+          border-white/10
+
+          overflow-hidden
+
+          transition-all
+
+          duration-300
+
+
+          ${open ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}
+
+        `}
+      >
+        <div
+          className="
+            px-6
+
+            py-8
+
+            flex
+
+            flex-col
+
+            gap-6
+          "
+        >
+          <MobileItem href="#home" text="Home" close={closeMenu} />
+
+          <MobileItem href="#about" text="About" close={closeMenu} />
+
+          <MobileItem href="#portfolio" text="Portfolio" close={closeMenu} />
+
+          <MobileItem href="#contact" text="Contact" close={closeMenu} />
+
+          <a
+            href="#contact"
+            onClick={closeMenu}
+            className="
+              mt-2
+
+              flex
+
+              items-center
+
+              justify-center
+
+              gap-3
+
+              px-6
+
+              py-3
+
+              rounded-xl
+
+              border
+
+              border-[#00FF88]
+
+              text-[#00FF88]
+
+              font-bold
+            "
+          >
+            Let's Connect
+            <ArrowUpRight size={18} />
+          </a>
+        </div>
       </div>
     </nav>
   );
@@ -224,116 +347,131 @@ justify-center
 
 function NavItem({
   href,
-
   text,
-
   active,
 }: {
   href: string;
-
   text: string;
-
   active: boolean;
 }) {
   return (
     <a
       href={href}
       className="
-relative
+        relative
 
-group
+        group
 
-font-bold
+        font-bold
 
-text-sm
+        text-sm
 
-pb-8
+        pb-8
 
-transition
-
-"
+        transition
+      "
     >
       <span
         className={`
-transition
+          transition
 
-duration-300
+          duration-300
 
-${active ? "text-[#00FF88]" : "text-white group-hover:text-[#00FF88]"}
-
-`}
+          ${active ? "text-[#00FF88]" : "text-white group-hover:text-[#00FF88]"}
+        `}
       >
         {text}
       </span>
 
-      {/* DOT BAWAH */}
+      {/* DOT */}
 
       <span
         className={`
-absolute
+          absolute
 
-left-1/2
+          left-1/2
 
--translate-x-1/2
+          -translate-x-1/2
 
+          bottom-3
 
-bottom-3
+          w-[7px]
 
+          h-[7px]
 
-w-[7px]
+          rounded-full
 
-h-[7px]
+          bg-[#00FF88]
 
+          transition-all
 
-rounded-full
-
-
-bg-[#00FF88]
-
-
-transition-all
-
-duration-300
+          duration-300
 
 
-${
-  active
-    ? "opacity-100 scale-100"
-    : "opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100"
-}
+          ${
+            active
+              ? "opacity-100 scale-100"
+              : "opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100"
+          }
 
-`}
+        `}
       />
 
-      {/* GARIS BAWAH */}
+      {/* LINE */}
 
       <span
         className={`
-absolute
+          absolute
 
-left-1/2
+          left-1/2
 
--translate-x-1/2
+          -translate-x-1/2
 
+          bottom-0
 
-bottom-0
+          h-[2px]
 
+          bg-[#00FF88]
 
-h-[2px]
+          transition-all
 
-
-bg-[#00FF88]
-
-
-transition-all
-
-duration-300
+          duration-300
 
 
-${active ? "w-10" : "w-0 group-hover:w-10"}
+          ${active ? "w-10" : "w-0 group-hover:w-10"}
 
-`}
-      ></span>
+        `}
+      />
+    </a>
+  );
+}
+
+function MobileItem({
+  href,
+  text,
+  close,
+}: {
+  href: string;
+  text: string;
+  close: () => void;
+}) {
+  return (
+    <a
+      href={href}
+      onClick={close}
+      className="
+        text-white
+
+        text-lg
+
+        font-bold
+
+        hover:text-[#00FF88]
+
+        transition
+      "
+    >
+      {text}
     </a>
   );
 }
