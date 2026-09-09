@@ -45,11 +45,18 @@ export const metadata: Metadata = {
     },
   ],
 
-  creator: "MaghFirli Alif Al Ayubi",
+  creator: "MaghFirli Al Ayubi",
 
-  publisher: "MaghFirli Alif Al Ayubi",
+  publisher: "MaghFirli Al Ayubi",
 
   applicationName: "MaghFirli Portfolio",
+
+  /**
+   * GOOGLE SEARCH CONSOLE VERIFICATION
+   */
+  verification: {
+    google: "vOnKUYLkjihgOxUBD4t9zBbGyVUpGYbyF5UR3_L6tBU",
+  },
 
   openGraph: {
     type: "website",
@@ -68,11 +75,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/images/profile/profile.png",
-
         width: 800,
-
         height: 800,
-
         alt: "MaghFirli Alif Al Ayubi Cyber Security Portfolio",
       },
     ],
@@ -91,12 +95,10 @@ export const metadata: Metadata = {
 
   robots: {
     index: true,
-
     follow: true,
 
     googleBot: {
       index: true,
-
       follow: true,
 
       "max-image-preview": "large",
