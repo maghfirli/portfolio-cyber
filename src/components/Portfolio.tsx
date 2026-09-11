@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -26,6 +28,21 @@ function ProjectIcon({ category }: { category: string }) {
 }
 
 export default function Portfolio() {
+  const [activeFilter, setActiveFilter] = useState("All");
+
+  const filters = [
+    "All",
+    "Cyber Security",
+    "GRC",
+    "Web Development",
+    "Research",
+  ];
+
+  const filteredProjects =
+    activeFilter === "All"
+      ? projects
+      : projects.filter((project) => project.category.includes(activeFilter));
+
   return (
     <section
       id="portfolio"
@@ -38,7 +55,11 @@ bg-gradient-to-b
 from-[#020617]
 to-[#052E25]
 
-py-28
+py-20
+
+sm:py-24
+
+lg:py-28
 "
     >
       <div
@@ -46,8 +67,17 @@ py-28
 absolute
 right-0
 top-40
-w-[600px]
-h-[600px]
+w-[350px]
+
+h-[350px]
+
+sm:w-[500px]
+
+sm:h-[500px]
+
+lg:w-[600px]
+
+lg:h-[600px]
 
 rounded-full
 
@@ -87,7 +117,7 @@ lg:justify-between
 
 items-start
 
-mb-12
+mb-10
 
 lg:mb-16
 "
@@ -116,7 +146,9 @@ bg-[#00FF88]
                 className="
 text-[#00FF88]
 
-tracking-[5px]
+tracking-[3px]
+
+sm:tracking-[5px]
 
 font-bold
 "
@@ -131,13 +163,14 @@ text-white
 
 font-bold
 
-text-4xl
+text-3xl
 
 sm:text-5xl
 
 lg:text-[72px]
 
-leading-none
+leading-tight
+
 "
             >
               My Portfolio
@@ -151,13 +184,15 @@ max-w-[850px]
 
 text-gray-300
 
-text-base
+text-sm
 
 sm:text-lg
 
 lg:text-xl
 
-leading-8
+leading-7
+
+lg:leading-8
 "
             >
               A collection of selected projects that reflect my passion in
@@ -212,6 +247,8 @@ mt-5
 
         {/* FILTER */}
 
+        {/* FILTER */}
+
         <div
           className="
 flex
@@ -220,18 +257,18 @@ overflow-x-auto
 
 gap-3
 
-mb-10
+mb-8
 
-pb-2
+pb-3
 
 scrollbar-hide
 "
         >
-          {["All", "Cyber Security", "GRC", "Web Development", "Research"].map(
-            (item, index) => (
-              <button
-                key={item}
-                className={`
+          {filters.map((item) => (
+            <button
+              key={item}
+              onClick={() => setActiveFilter(item)}
+              className={`
 px-5
 py-2
 
@@ -243,19 +280,16 @@ border
 
 transition
 
-
 ${
-  index === 0
+  activeFilter === item
     ? "bg-[#00FF88] text-black border-[#00FF88]"
     : "text-gray-300 border-[#164E45] hover:border-[#00FF88] hover:text-[#00FF88]"
 }
-
 `}
-              >
-                {item}
-              </button>
-            ),
-          )}
+            >
+              {item}
+            </button>
+          ))}
         </div>
 
         {/* PROJECT CARD */}
@@ -266,16 +300,16 @@ grid
 
 grid-cols-1
 
-sm:grid-cols-2
+md:grid-cols-2
 
-lg:grid-cols-3
+xl:grid-cols-3
 
 gap-5
 
 lg:gap-8
 "
         >
-          {projects.map((project, index) => (
+          {filteredProjects.map((project, index) => (
             <div
               key={project.slug}
               className="
@@ -307,11 +341,9 @@ hover:shadow-[0_0_40px_rgba(0,255,136,0.15)]
                 className="
 relative
 
-h-[220px]
+aspect-[16/10]
 
-sm:h-[260px]
-
-lg:h-[280px]
+lg:aspect-[16/9]
 
 overflow-hidden
 "
@@ -339,9 +371,13 @@ group-hover:scale-110
                   className="
 absolute
 
-top-5
+top-3
 
-left-5
+left-3
+
+sm:top-5
+
+sm:left-5
 
 flex
 
@@ -376,7 +412,9 @@ text-sm
 
               <div
                 className="
-p-5
+p-4
+
+sm:p-5
 
 lg:p-7
 "
@@ -416,6 +454,8 @@ leading-6
 lg:leading-7
 
 mt-4
+
+line-clamp-3
 "
                 >
                   {project.description}
@@ -427,7 +467,9 @@ flex
 
 flex-wrap
 
-gap-2
+gap-1.5
+
+sm:gap-2
 
 mt-6
 "
@@ -460,9 +502,11 @@ text-gray-300
                   className="
 flex
 
-flex-col
+flex-row
 
-sm:flex-row
+justify-between
+
+items-center
 
 gap-4
 

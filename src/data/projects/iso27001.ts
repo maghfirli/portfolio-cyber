@@ -8,7 +8,7 @@ export const iso27001 = {
 
   type: "implementation",
 
-  category: "Governance Risk & Compliance",
+  category: "Cyber Security Governance Risk & Compliance/GRC",
 
   year: "December 2024 - February 2026",
 

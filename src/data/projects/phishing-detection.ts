@@ -8,7 +8,7 @@ export const phishingDetection = {
 
   type: "research",
 
-  category: "Cybersecurity Research",
+  category: "Cyber Security Research",
 
   year: "2026",
 

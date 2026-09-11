@@ -103,9 +103,318 @@ xl:px-16
 
 "
       >
+        {/* ================= MOBILE VERSION ================= */}
+
         <div
           className="
+lg:hidden
+"
+        >
+          {/* TITLE */}
+
+          <div
+            className="
+flex
+items-center
+gap-4
+mb-8
+"
+          >
+            <div
+              className="
+w-10
+h-[2px]
+bg-[#00FF88]
+"
+            />
+
+            <p
+              className="
+text-[#00FF88]
+tracking-[5px]
+font-bold
+text-sm
+"
+            >
+              CONTACT
+            </p>
+          </div>
+
+          <h1
+            className="
+text-white
+font-bold
+text-4xl
+leading-tight
+"
+          >
+            Let's Work
+            <br />
+            <span
+              className="
+text-[#00FF88]
+"
+            >
+              Together
+            </span>
+          </h1>
+
+          <p
+            className="
+text-gray-400
+mt-5
+leading-7
+"
+          >
+            Have a project, opportunity, or collaboration idea? Let's discuss
+            cybersecurity, GRC, secure development, and technology solutions.
+          </p>
+
+          {/* FEATURE */}
+
+          <div
+            className="
 grid
+grid-cols-1
+gap-4
+mt-8
+"
+          >
+            <Feature icon={<MessageCircle size={22} />} text="Fast Response" />
+
+            <Feature
+              icon={<ShieldCheck size={22} />}
+              text="Professional Security"
+            />
+
+            <Feature icon={<Users size={22} />} text="Open Collaboration" />
+          </div>
+
+          {/* CONTACT CARD */}
+
+          <div
+            className="
+grid
+grid-cols-2
+gap-3
+mt-10
+"
+          >
+            <ContactCard
+              icon={<Phone size={22} />}
+              title="WhatsApp"
+              desc="Chat"
+              value="Open"
+              link="https://wa.link/wip801"
+            />
+
+            <ContactCard
+              icon={<Mail size={22} />}
+              title="Email"
+              desc="Business"
+              value="Send"
+              link="mailto:maghfirliayubi@gmail.com"
+            />
+
+            <ContactCard
+              icon={<LinkedinLogo />}
+              title="LinkedIn"
+              desc="Profile"
+              value="View"
+              link="https://www.linkedin.com/in/maghfirli-alif-al-ayubi-2595202a5"
+            />
+
+            <ContactCard
+              icon={<GithubLogo />}
+              title="GitHub"
+              desc="Projects"
+              value="Open"
+              link="https://github.com/maghfirli"
+            />
+          </div>
+
+          {/* FORM MOBILE */}
+
+          <div
+            className="
+mt-10
+rounded-3xl
+
+border
+border-[#164E45]
+
+bg-[#071A18]/80
+
+p-5
+"
+          >
+            <h2
+              className="
+text-white
+font-bold
+text-xl
+"
+            >
+              Send Message
+            </h2>
+
+            <p
+              className="
+text-gray-400
+text-sm
+mt-2
+"
+            >
+              Your message will open in Gmail.
+            </p>
+
+            <div
+              className="
+space-y-4
+mt-6
+"
+            >
+              <Input placeholder="Your Name" value={name} setValue={setName} />
+
+              <Input
+                placeholder="Your Email"
+                value={email}
+                setValue={setEmail}
+              />
+
+              <Input
+                placeholder="Subject"
+                value={subject}
+                setValue={setSubject}
+              />
+
+              <textarea
+                placeholder="Your Message"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                className="
+w-full
+h-[140px]
+
+rounded-xl
+
+bg-[#020617]
+
+border
+
+border-[#164E45]
+
+p-4
+
+text-white
+
+outline-none
+
+focus:border-[#00FF88]
+"
+              />
+
+              <button
+                onClick={sendEmail}
+                className="
+w-full
+
+h-[55px]
+
+rounded-xl
+
+bg-[#00FF88]
+
+text-black
+
+font-bold
+
+flex
+
+items-center
+
+justify-center
+
+gap-3
+"
+              >
+                <Send size={18} />
+                Send Message
+              </button>
+            </div>
+
+            <div
+              className="
+flex
+items-center
+gap-2
+text-gray-400
+text-sm
+mt-5
+"
+            >
+              <Lock size={15} />
+              Your information is safe.
+            </div>
+          </div>
+
+          {/* CTA MOBILE */}
+
+          <div
+            className="
+mt-8
+
+rounded-3xl
+
+border
+
+border-[#164E45]
+
+bg-[#071A18]/80
+
+p-6
+
+text-center
+"
+          >
+            <h2
+              className="
+text-white
+font-bold
+text-xl
+"
+            >
+              Open For Collaboration
+            </h2>
+
+            <p
+              className="
+text-gray-400
+text-sm
+mt-3
+leading-6
+"
+            >
+              Security assessment, web development, and GRC consultation.
+            </p>
+
+            <p
+              className="
+text-[#00FF88]
+italic
+text-sm
+mt-5
+"
+            >
+              "Security, Governance, and Technology."
+            </p>
+          </div>
+        </div>
+        <div
+          className="
+hidden
+
+lg:grid
 
 grid-cols-[42%_33%_25%]
 
