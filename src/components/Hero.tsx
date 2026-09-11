@@ -98,7 +98,6 @@ xl:px-24
 
 min-h-screen
 
-
 grid
 
 grid-cols-1
@@ -106,7 +105,9 @@ grid-cols-1
 lg:grid-cols-[40%_60%]
 
 
-items-center
+items-start
+
+lg:items-center
 
 
 pt-28
@@ -114,7 +115,7 @@ pt-28
 lg:pt-24
 
 
-gap-10
+gap-16
 
 lg:gap-0
 
@@ -313,8 +314,10 @@ duration-300
 
           <div
             className="
-mt-12
+mt-8
 sm:mt-14
+relative
+z-[200]
 "
           >
             <p
@@ -372,7 +375,7 @@ text-[17px]
           className="
 relative
 
-h-[520px]
+h-[380px]
 
 sm:h-[650px]
 
@@ -548,22 +551,22 @@ lg:mt-0
 
 
 
-            bottom-[-20px]
+                bottom-[-20px]
 
 
-            w-[390px]
+                w-[280px]
 
-            h-[560px]
-
-
-            sm:w-[520px]
-
-            sm:h-[700px]
+                h-[400px]
 
 
-            lg:w-[840px]
+                sm:w-[520px]
 
-            lg:h-[960px]
+                sm:h-[700px]
+
+
+                lg:w-[840px]
+
+                lg:h-[960px]
 
 
             z-20
@@ -589,7 +592,7 @@ lg:mt-0
 
           <Card
             className="
-            top-[120px]
+            top-[80px]
 
             left-[5px]
 
@@ -607,7 +610,7 @@ lg:mt-0
 
           <Card
             className="
-            top-[120px]
+            top-[80px]
 
             right-[5px]
 
@@ -735,8 +738,7 @@ absolute
 z-50
 
 
-w-[170px]
-
+w-[145px]
 
 sm:w-[210px]
 
