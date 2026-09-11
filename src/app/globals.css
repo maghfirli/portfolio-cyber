@@ -111,3 +111,11 @@ section[id] {
   background: #00ff88;
   color: #020617;
 }
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

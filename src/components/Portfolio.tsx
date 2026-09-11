@@ -65,7 +65,11 @@ max-w-[1600px]
 
 mx-auto
 
-px-16
+px-5
+
+sm:px-8
+
+lg:px-16
 
 xl:px-20
 "
@@ -75,10 +79,17 @@ xl:px-20
         <div
           className="
 flex
-justify-between
+flex-col
+
+lg:flex-row
+
+lg:justify-between
+
 items-start
 
-mb-16
+mb-12
+
+lg:mb-16
 "
         >
           <div>
@@ -120,7 +131,11 @@ text-white
 
 font-bold
 
-text-[72px]
+text-4xl
+
+sm:text-5xl
+
+lg:text-[72px]
 
 leading-none
 "
@@ -136,7 +151,11 @@ max-w-[850px]
 
 text-gray-300
 
-text-xl
+text-base
+
+sm:text-lg
+
+lg:text-xl
 
 leading-8
 "
@@ -148,6 +167,10 @@ leading-8
 
           <div
             className="
+hidden
+
+lg:block
+
 mt-10
 
 text-right
@@ -193,9 +216,15 @@ mt-5
           className="
 flex
 
-gap-4
+overflow-x-auto
+
+gap-3
 
 mb-10
+
+pb-2
+
+scrollbar-hide
 "
         >
           {["All", "Cyber Security", "GRC", "Web Development", "Research"].map(
@@ -203,8 +232,10 @@ mb-10
               <button
                 key={item}
                 className={`
-px-6
+px-5
 py-2
+
+whitespace-nowrap
 
 rounded-full
 
@@ -233,9 +264,15 @@ ${
           className="
 grid
 
-grid-cols-3
+grid-cols-1
 
-gap-8
+sm:grid-cols-2
+
+lg:grid-cols-3
+
+gap-5
+
+lg:gap-8
 "
         >
           {projects.map((project, index) => (
@@ -270,7 +307,11 @@ hover:shadow-[0_0_40px_rgba(0,255,136,0.15)]
                 className="
 relative
 
-h-[280px]
+h-[220px]
+
+sm:h-[260px]
+
+lg:h-[280px]
 
 overflow-hidden
 "
@@ -314,9 +355,11 @@ border
 
 border-[#164E45]
 
-px-4
+px-3
 
-py-2
+py-1.5
+
+text-xs
 
 rounded-full
 
@@ -333,7 +376,9 @@ text-sm
 
               <div
                 className="
-p-7
+p-5
+
+lg:p-7
 "
               >
                 <p
@@ -350,7 +395,9 @@ font-bold
                   className="
 text-white
 
-text-2xl
+text-xl
+
+lg:text-2xl
 
 font-bold
 
@@ -364,7 +411,9 @@ mt-3
                   className="
 text-gray-400
 
-leading-7
+leading-6
+
+lg:leading-7
 
 mt-4
 "
@@ -411,9 +460,15 @@ text-gray-300
                   className="
 flex
 
-justify-between
+flex-col
 
-items-center
+sm:flex-row
+
+gap-4
+
+sm:justify-between
+
+sm:items-center
 
 mt-8
 "

@@ -114,8 +114,7 @@ pt-28
 
 lg:pt-24
 
-
-gap-16
+gap-8
 
 lg:gap-0
 
@@ -314,9 +313,16 @@ duration-300
 
           <div
             className="
+hidden
+
+sm:block
+
 mt-8
+
 sm:mt-14
+
 relative
+
 z-[200]
 "
           >
@@ -375,13 +381,13 @@ text-[17px]
           className="
 relative
 
-h-[380px]
+h-[330px]
 
 sm:h-[650px]
 
 lg:h-[900px]
 
-mt-0
+mt-[-40px]
 
 lg:mt-0
 "
@@ -551,12 +557,12 @@ lg:mt-0
 
 
 
-                bottom-[-20px]
+bottom-[-10px]
 
 
-                w-[280px]
+w-[250px]
 
-                h-[400px]
+h-[360px]
 
 
                 sm:w-[520px]
@@ -592,9 +598,8 @@ lg:mt-0
 
           <Card
             className="
-            top-[80px]
-
-            left-[5px]
+top-[40px]
+left-[0px]
 
 
             lg:top-[180px]
@@ -610,9 +615,9 @@ lg:mt-0
 
           <Card
             className="
-            top-[80px]
+top-[40px]
 
-            right-[5px]
+right-[0px]
 
 
             lg:top-[180px]
@@ -628,7 +633,7 @@ lg:mt-0
 
           <Card
             className="
-            bottom-[100px]
+          bottom-[40px]
 
             left-[5px]
 
@@ -646,7 +651,7 @@ lg:mt-0
 
           <Card
             className="
-            bottom-[100px]
+            bottom-[40px]
 
             right-[5px]
 
@@ -738,7 +743,7 @@ absolute
 z-50
 
 
-w-[145px]
+w-[135px]
 
 sm:w-[210px]
 
